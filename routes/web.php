@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-Route::get('/cadastro', [\App\Http\Controllers\UserController::class, "getCadastro"]);
+Route::get('/deleteusers/{user_id}', [\App\Http\Controllers\UserController::class, 'delete'])->name("user.backend.delete");
+Route::put('/editusers/{user_id}', [\App\Http\Controllers\UserController::class, 'putedit'])->name("user.backend.put.edit");
+Route::get('/editusers/{user_id}', [\App\Http\Controllers\UserController::class, 'getedit'])->name("user.backend.edit");
+Route::get('/listusers', [\App\Http\Controllers\UserController::class, 'getListusers'])->name("user.backend.listusers");
+Route::get('/cadastro', [\App\Http\Controllers\UserController::class, "getCadastro"])->name("user.frontend.cadastro");
 Route::post('/cadastro', [\App\Http\Controllers\UserController::class, "postCadastro"])->name("user.post.cadastro");
